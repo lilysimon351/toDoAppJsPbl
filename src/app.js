@@ -1,5 +1,5 @@
 import './app.css';
-import Row from './rowComponent/Row';
+import Row from './components/Row';
 let root = document.getElementById('root');
 
 let content = document.createElement('div');
