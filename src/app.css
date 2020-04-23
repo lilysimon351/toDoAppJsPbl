@@ -4,3 +4,9 @@
   #content > div {
     margin: 10px;
   }
+.d-none {
+  display: none;
+}
+.d-initial {
+  display: initial;
+}

@@ -1,29 +1,29 @@
-import './app.css';
 import Row from './components/Row';
-let root = document.getElementById('root');
-
-let content = document.createElement('div');
-let inp = document.createElement('input');
-let add = document.createElement('button');
-content.id = 'content';
-inp.id = 'input';
-inp.type = 'text';
-add.id = 'add';
-add.textContent = 'add';
-
-content.append(inp,add);
-root.append(content);
-
-add.addEventListener('click', onTypeEnd);
-inp.addEventListener('keydown', function(e){
-    if(e.keyCode == 13) {
-        onTypeEnd(e);
+import {Start} from './components/GenerateElements';
+export class App {
+    constructor() {
+        this.items = [];
+        this.root = new Start();
+        this.root = this.root.html;
+        this.toDoInput = this.root.querySelector('#to-do-input');        
+        this.addItem = this.root.querySelector('#add-btn');
+        this.itemsWrapper = this.root.querySelector('#items-wrapper');
     }
-});
+    init() {
+        document.querySelector('body').append(this.root);
 
-function onTypeEnd() {
-    let value = inp.value;
-    if(value == "") return;
-    let row = new Row(value);
-    content.append(row.generateRow());
+        this.addItem.addEventListener('click', () => this.addRow.call(this));
+        this.toDoInput.addEventListener('keydown', (e) => {
+            if(e.keyCode == 13) {
+                this.addRow();
+            }
+        });
+    }
+    addRow() {
+        const val = this.toDoInput.value;
+        if(val == "") return;
+        this.row = new Row(val);
+        this.row = this.row.init();
+        this.itemsWrapper.prepend(this.row);
+    }
 }
