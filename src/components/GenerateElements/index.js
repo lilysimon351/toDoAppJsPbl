@@ -1,4 +1,4 @@
-class Generate {
+class GenerateElements {
     elem(tag, id, nameClass, text) {
         let elem = document.createElement(tag);
         if(id) elem.id = id;
@@ -16,7 +16,7 @@ class Generate {
     }
 }
 
-export class Start extends Generate {
+export class Start extends GenerateElements {
 
 	get html(){
 		this.root = super.elem('div', 'root', '', '');
@@ -33,7 +33,7 @@ export class Start extends Generate {
 
 }
 
-export class Item extends Generate {
+export class Item extends GenerateElements {
 
 	get html() {
         this.row = super.elem('div', '', 'row', '');
