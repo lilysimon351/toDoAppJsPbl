@@ -1,7 +1,11 @@
 import {Item} from '../GenerateElements';
+import {App} from '../../App';
 export default class Row {
-  constructor(value) {
+  constructor(value, removeItem) {
     this.value = value;
+    this.isremoved = false;
+    this.removeItem = removeItem;
+    
     this.row = new Item();
     this.row = this.row.html;
     this.text = this.row.querySelector('.text');
@@ -11,8 +15,7 @@ export default class Row {
     this.newEditBtn = this.row.querySelector('.new-edit-btn');
     this.text.textContent = value;
     this.field.setAttribute('value', value);
-  }
-  init() {
+    
     document.getElementById("to-do-input").value = "";
 
     this.removeBtn.addEventListener("click", () => this.removeRow());
@@ -24,11 +27,12 @@ export default class Row {
         this.editRow();
       }
     });
-    return this.row;
   }
 
   removeRow() {
+    this.isremoved = true;
     this.row.remove();
+    this.removeItem();
   }
   editRow() {
     if(this.field.value !== ""){
@@ -44,5 +48,8 @@ export default class Row {
       if(children[i].classList.contains(displayClass)) children[i].classList.remove(displayClass)
       else children[i].classList.add(displayClass)
     }
+  }
+  get html() {
+    return this.row;
   }
 }
