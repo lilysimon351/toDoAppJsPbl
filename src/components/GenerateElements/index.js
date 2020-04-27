@@ -1,4 +1,4 @@
-class GenerateElements {
+export class GenerateElements {
     elem(tag, id, nameClass, text) {
         let elem = document.createElement(tag);
         if(id) elem.id = id;
@@ -19,7 +19,7 @@ class GenerateElements {
 export class Start extends GenerateElements {
 
 	get html(){
-		this.root = super.elem('div', 'root', '', '');
+		this.root = super.elem('div', 'app', '', '');
 		this.content = super.elem('div', 'content', '', '');
         this.toDoInput = super.field('text', 'to-do-input', '', 'Write smth');
 		this.addItem = super.elem('button', 'add-btn', '', 'Add');
@@ -54,9 +54,9 @@ export class LoginForm extends GenerateElements {
 
 	get html() {
         this.form = super.elem('form', 'login-form', '', '');
-        this.login = super.field('text', 'input-login', 'form-input', '');
-        this.pass = super.field('text', 'input-pass', 'form-input', '');
-        this.submit = super.field('submit', 'login-submit', 'form-submit', 'Login');
+        this.login = super.field('text', 'input-login', 'form-input', 'username');
+        this.pass = super.field('password', 'input-pass', 'form-input', 'pass');
+        this.submit = super.elem('button', 'login-submit', 'form-submit', 'Login');
 
         this.form.append(this.login, this.pass, this.submit);
 
@@ -69,8 +69,10 @@ export class NavElem extends GenerateElements {
 
 	get html() {
         this.navbar = super.elem('nav', 'navbar', '', '');
-        this.login = super.elem('button', 'login-page', '', 'Login');
-        this.app = super.elem('button', 'app-page', '', 'ToDO App');
+        this.login = super.elem('a', 'login-page', 'navbar__item', 'Login');
+        this.app = super.elem('a', 'app-page', 'navbar__item', 'ToDO App');
+        this.login.href = '#login';
+        this.app.href = '#app';
 
         this.navbar.append(this.login, this.app);
 

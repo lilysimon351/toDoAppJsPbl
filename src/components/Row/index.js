@@ -5,8 +5,8 @@ export default class Row {
     this.isremoved = false;
     this.removeItem = removeItem;
     
-    this.row = new Item();
-    this.row = this.row.html;
+    const row = new Item();
+    this.row = row.html;
     this.text = this.row.querySelector('.text');
     this.removeBtn = this.row.querySelector('.btn-remove');
     this.editBtn = this.row.querySelector('.btn-edit');

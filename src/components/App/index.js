@@ -5,13 +5,11 @@ export default class App {
         this.items = [];
         this.removeItem = this.removeItem.bind(this);
 
-        this.root = new Start();
-        this.root = this.root.html;
+        const root = new Start();
+        this.root = root.html;
         this.toDoInput = this.root.querySelector('#to-do-input');        
         this.addItem = this.root.querySelector('#add-btn');
         this.itemsWrapper = this.root.querySelector('#items-wrapper');
-        
-        document.querySelector('body').append(this.root);
 
         this.addItem.addEventListener('click', () => this.addRow());
         this.toDoInput.addEventListener('keydown', (e) => {
@@ -38,5 +36,8 @@ export default class App {
         this.items.forEach((item) => {
             this.itemsWrapper.prepend(item.html);
         })
+    }
+    get html() {
+        return this.root;
     }
 }
