@@ -1,4 +1,4 @@
 import './app.css';
-import { App } from './App.js';
+import Nav from './components/Nav';
 
-const app = new App();
+const nav = new Nav();

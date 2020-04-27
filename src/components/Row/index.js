@@ -1,5 +1,4 @@
 import {Item} from '../GenerateElements';
-import {App} from '../../App';
 export default class Row {
   constructor(value, removeItem) {
     this.value = value;
