@@ -18,9 +18,9 @@ export default class Nav {
         this.mainContent.append(login.html);    
     }
     renderAppPage() {
-        const app = new App();
+        //const app = new App(3);
         this.mainContent.innerHTML = '';
-        this.mainContent.append(app.html);
+        this.mainContent.append(new App(3).html);
     }
     get html(){
         return this.nav;

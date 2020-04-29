@@ -80,3 +80,25 @@ export class NavElem extends GenerateElements {
 	}
 
 }
+
+export class Paging extends GenerateElements {
+    constructor(pages){
+        super();
+        this.pages = pages;
+    }
+
+	get html() {
+        this.nav = super.elem('nav', 'pagination-wrapper', '', '');
+        this.ul = super.elem('ul', 'pagination', 'pagination', '');
+        for (let i=1; i <= this.pages; i++) {
+            this.li = super.elem('li', '', 'page-item', '');
+            this.link = super.elem('a', '', 'page-link', i);
+            this.link.href = `#page-${i}`;
+            this.link.setAttribute('data-page', i);
+            this.li.append(this.link);
+            this.ul.append(this.li);
+        }
+        this.nav.append(this.ul);
+		return this.nav;
+	}
+}

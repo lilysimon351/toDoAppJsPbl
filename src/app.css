@@ -65,3 +65,28 @@ button:hover, button:active, button:visited {
   flex-direction: column;
   margin-top: 20px;
 }
+
+.pagination {
+  display: -ms-flexbox;
+  display: flex;
+  justify-content: center;
+  padding-left: 0;
+  list-style: none;
+  border-radius: .25rem;
+  margin: 1.5rem auto;
+} 
+
+.page-link {
+  position: relative;
+  display: block;
+  padding: .5rem .75rem;
+  margin-left: -1px;
+  line-height: 1.25;
+  color: #007bff;
+  background-color: #fff;
+  border: 1px solid #dee2e6;
+  text-decoration: none;
+}
+.page-link:hover, .page-link.active {
+  color: #673AB7;
+}
